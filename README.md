@@ -15,13 +15,3 @@ This project consists of a series of interactive web-based applications designed
 * Electricity Bill Calculation with Peak Hours
 * Job Application Filter
 * Flight Ticket Booking System
-
-
-
-## Contributing
-
-Contributions are welcome! If you have any suggestions or find any issues, please feel free to submit a pull request or open an issue.
-
-## License
-
-This project is licensed under the MIT License.
