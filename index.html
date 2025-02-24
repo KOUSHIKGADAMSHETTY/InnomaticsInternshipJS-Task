@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Applications</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px;
+            width: 80%;
+            max-width: 600px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .container h2, .container h1 {
+            color: #2c3e50; /* Darker blue-gray for headings */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        input, select, button {
+            width: calc(100% - 22px);
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #3498db; /* Blue on focus */
+            outline: none;
+        }
+
+        button {
+            background-color: #3498db; /* Blue button */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Darker blue on hover */
+        }
+
+        p {
+            margin-top: 15px;
+            color: #555;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .container:nth-child(even) {
+            background-color: #f8f8ff; /* Lighter off-white for even containers */
+        }
+        select{
+            height: 45px;
+        }
+        .container:last-child{
+            margin-bottom: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>1. ATM Withdrawal Machine</h1>
+        <input type="number" id="atmbalance" placeholder="Balance" /><br />
+        <input type="number" id="atmamount" placeholder="Amount" /><br />
+        <input type="number" id="enterpin" placeholder="Entered Pin" /><br />
+        <input type="number" id="pin" placeholder="Pin" />
+        <button onclick="testatm()">Withdraw</button>
+        <p id="result"></p>
+    </div>
+
+    <div class="container">
+        <h2>2. Student Grading System with Extra Credit</h2>
+        <input type="number" id="studentMarks" placeholder="Marks" /><br />
+        <input type="number" id="attendance" placeholder="Attendance" />
+        <button onclick="calculategrade()">Calculate Grade</button>
+        <p id="gradeResult"></p>
+    </div>
+
+    <div class="container">
+        <h2>3. Movie Ticket Pricing with Time and Age Discount</h2>
+        <input type="number" id="age" placeholder="Age" /><br />
+        <input type="number" id="showTime" placeholder="Show Time (24h)" />
+        <button onclick="CalculateTicketPrice()">Calculate Ticket Price</button>
+        <p id="ticketResult"></p>
+    </div>
+
+    <div class="container">
+        <h2>4. Online Shopping Discount & Free Shipping</h2>
+        <input type="number" id="orderAmount" placeholder="Order Amount" />
+        <button onclick="CalculateFinalAmount()">Calculate Final Amount</button>
+        <p id="shoppingResult"></p>
+    </div>
+
+    <div class="container">
+        <h2>5. Smart Traffic Light System</h2>
+        <label for="trafficDensity">Select Traffic Density:</label>
+        <select id="trafficDensity">
+            <option value="heavy">Heavy Traffic</option>
+            <option value="moderate">Moderate Traffic</option>
+            <option value="light">Light Traffic</option>
+        </select>
+        <button onclick="startTrafficLight()">Start Timer</button>
+        <h3>Green Light Duration: <span id="duration">60</span> seconds</h3>
+    </div>
+
+    <div class="container">
+        <h2>6. E-commerce Coupon Redemption</h2>
+        <input type="number" id="couponOrderAmount" placeholder="Order Amount" /><br />
+        <input type="text" id="couponCode" placeholder="Coupon Code" />
+        <button onclick="testApplyCoupon()">Apply Coupon</button>
+        <p id="couponResult"></p>
+    </div>
+
+    <div class="container">
+        <h2>7. Fitness Membership Plan</h2>
+        <input type="text" id="planType" placeholder="Plan Type (Basic/Premium/VIP)" />
+        <label><input type="checkbox" id="wantsTrainer" /> Wants Trainer</label>
+        <label><input type="checkbox" id="wantsDietPlan" /> Wants Diet Plan</label>
+        <button onclick="testChoosePlan()">Choose Plan</button>
+        <p id="planResult"></p>
+    </div>
+
+    <div class="container">
+        <h2>8. Electricity Bill Calculation with Peak Hours</h2>
+        <input type="number" id="units" placeholder="Units" /><br />
+        <input type="number" id="timeOfDay" placeholder="Time of Day (24h)" />
+        <button onclick="testCalculateElectricityBill()">Calculate Bill</button>
+        <p id="billResult"></p>
+    </div>
+
+    <div class="container">
+        <h2>9. Job Application Filter</h2>
+        <input type="number" id="jobAge" placeholder="Age" /><br />
+        <input type="number" id="experience" placeholder="Experience (years)" /><br />
+        <input type="text" id="qualification" placeholder="Qualification" />
+        <button onclick="testIsEligibleForJob()">Check Eligibility</button>
+        <p id="jobResult"></p>
+    </div>
+
+    <div class="container">
+        <h2>10. Flight Ticket Booking System</h2>
+        <input type="text" id="classType" placeholder="Class Type (Business/First)" /><br />
+        <input type="number" id="luggageWeight" placeholder="Luggage Weight (kg)" />
+        <label><input type="checkbox" id="isStudent" /> Is Student</label>
+        <label><input type="checkbox" id="isSenior" /> Is Senior</label>
+        <button onclick="testCalculateFlightFare()">Calculate Fare</button>
+        <p id="flightResult"></p>
+    </div>
+
+    <script>
+       // Javascript functions remain the same as in your original file.
+        // ... (All your Javascript functions from the original code)
+    </script>
+</body>
+</html>
